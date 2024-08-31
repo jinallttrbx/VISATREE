@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "8478536545",
+    "project_id": "visatree-5ef4b",
+    "storage_bucket": "visatree-5ef4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8478536545:android:7a44a66df2e07fe8bd0b20",
+        "android_client_info": {
+          "package_name": "com.lttrbx.visatree"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2AJSjNiO6RYCpRJkAFILb0S0kverjlLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
