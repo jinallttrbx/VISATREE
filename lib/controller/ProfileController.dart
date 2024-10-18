@@ -3,15 +3,16 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/ApiUrl.dart';
-import 'package:visatree/alertBoxes.dart';
+import 'package:visatree/Widgets/alertBoxes.dart';
+import 'package:visatree/Widgets/snackbar.dart';
+
 import 'package:visatree/model/profilemodel.dart';
-import 'package:visatree/snackbar.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:visatree/util/ApiUrl.dart';
 import 'package:visatree/util/images.dart';
+import 'package:visatree/util/session%20management.dart';
 
-import '../session management.dart';
 
 class ProfileController extends GetxController {
   var isLoading = true.obs;
@@ -74,6 +75,7 @@ class ProfileController extends GetxController {
     File? imgPath,
     BuildContext context,
   ) async {
+    print( "${ApiUrl.baseurl}students/profile");
     showLoadingDialog();
     String token = await share.istoken();
     try {
@@ -138,6 +140,7 @@ class ProfileController extends GetxController {
         isLoading.value = false;
         update();
       } else {
+        isLoading.value=false;
         ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
           content: Container(
             //color: Colors.transparent.withOpacity(0.25),
@@ -163,6 +166,7 @@ class ProfileController extends GetxController {
               right: 20,
               left: 20),
         ));
+        hideLoadingDialog();
         print("Server error");
 
         isLoading.value = false;

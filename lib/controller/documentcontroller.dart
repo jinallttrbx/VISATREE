@@ -1,13 +1,12 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:visatree/ApiUrl.dart';
-import 'package:visatree/alertBoxes.dart';
+import 'package:visatree/Widgets/alertBoxes.dart';
+import 'package:visatree/Widgets/snackbar.dart';
 import 'package:visatree/model/getdocument.dart';
-import 'package:visatree/session%20management.dart';
-import 'package:visatree/snackbar.dart';
+import 'package:visatree/util/ApiUrl.dart';
+import 'package:visatree/util/session%20management.dart';
 
 class DocumentController extends GetxController {
   var isLoading = false.obs;
@@ -15,10 +14,10 @@ class DocumentController extends GetxController {
   var DocumentList = [].obs;
   SessionManagement share = SessionManagement();
 
-
-
   List<Document> _documentList = [];
+
   List<Document> get documentList => _documentList;
+
   getuploadeddocument() async {
     String token = await share.istoken();
     DocumentList.value = [];
@@ -31,14 +30,12 @@ class DocumentController extends GetxController {
         headers: {"Authorization": "Bearer $token"},
       );
       statusCode.value = response.statusCode;
-      print(response.body);
       Map<String, dynamic> jsondata = jsonDecode(response.body);
       if (response.statusCode == 200) {
         if (jsondata["status"] == true) {
-          GetDocumentModel getproject =
-          GetDocumentModel.fromJson(jsondata);
-          DocumentList.value = getproject.document;
-          _documentList.addAll(getproject.document);
+          GetDocumentModel getdocument = GetDocumentModel.fromJson(jsondata);
+          DocumentList.value = getdocument.document;
+          _documentList.addAll(getdocument.document);
           hideLoadingDialog();
           isLoading.value = false;
           update();
@@ -52,9 +49,6 @@ class DocumentController extends GetxController {
         showInSnackBar(jsondata["message"], color: Colors.red);
       }
     } catch (e) {
-      print("rakesh");
-      print(e);
-      print("rakesh");
       isLoading.value = false;
       showInSnackBar("Error Occured", color: Colors.red);
       hideLoadingDialog();

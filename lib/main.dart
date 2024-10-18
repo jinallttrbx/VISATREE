@@ -4,9 +4,10 @@ import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:visatree/controller/chat_controller.dart';
 import 'package:visatree/controller/firebase_class.dart';
-import 'package:visatree/screens/appcontants.dart';
-import 'package:visatree/screens/splash.dart';
-import 'package:visatree/session%20management.dart';
+import 'package:visatree/util/appcontants.dart';
+import 'package:visatree/screens/authentication/splash.dart';
+import 'package:visatree/util/session%20management.dart';
+
 
 // import 'controller/firebase_class.dart';`
 
@@ -53,6 +54,11 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Visatree',
       theme: ThemeData(
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: AppColors.primaryColor,
+
+        ),
+
         fontFamily: 'Poppins',
         appBarTheme: const AppBarTheme(
             centerTitle: true,

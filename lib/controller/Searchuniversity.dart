@@ -1,79 +1,23 @@
-// import 'dart:convert';
-//
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:http/http.dart' as http;
-// import 'package:visatree/alertBoxes.dart';
-// import 'package:visatree/model/GetShortListUniversity.dart';
-// import 'package:visatree/model/getdocument.dart';
-// import 'package:visatree/session%20management.dart';
-// import 'package:visatree/snackbar.dart';
-//
-// class ShortByuserController extends GetxController {
-//   var isLoading = false.obs;
-//   var statusCode = 200.obs;
-//   var DocumentList = [].obs;
-//   SessionManagement share = SessionManagement();
-//
-//    ShortListedUniversityModel? shortlistuniversity;
-//   ShortListedUniversityModel get document => shortlistuniversity!;
-//
-//
-//
-//   getShortUniversity() async {
-//     String token = await share.istoken();
-//     DocumentList.value = [];
-//     // _document = null;
-//     showLoadingDialog();
-//     try {
-//       var response = await http.get(
-//         Uri.parse('${ApiUrl.baseurl}getuniversity_by_shortlist'),
-//         headers: {"Authorization": "Bearer $token"},
-//       );
-//       statusCode.value = response.statusCode;
-//       print(response.statusCode);
-//       print(response.body);
-//       final jsondata = jsonDecode(response.body);
-//       if (response.statusCode == 200) {
-//         if (jsondata["status"] == true) {
-//           final data = ShortListedUniversityModel.fromJson(jsondata);
-//           shortlistuniversity = data;
-//
-//           print(jsondata);
-//           update();
-//           hideLoadingDialog();
-//         } else {
-//           hideLoadingDialog();
-//         }
-//       } else {
-//         hideLoadingDialog();
-//         showInSnackBar(jsondata["message"], color: Colors.red);
-//       }
-//     } catch (e) {
-//       print(e);
-//       showInSnackBar("Error Occured", color: Colors.red);
-//       hideLoadingDialog();
-//     }
-//     update();
-//   }
-// }
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:visatree/ApiUrl.dart';
-import 'package:visatree/alertBoxes.dart';
+import 'package:visatree/Widgets/alertBoxes.dart';
+import 'package:visatree/Widgets/snackbar.dart';
+
 import 'package:visatree/model/GetScholarshioModel.dart';
 import 'package:visatree/model/GetSearchUniversity.dart';
 import 'package:visatree/model/GetShortListUniversity.dart';
 import 'package:visatree/model/adminsortlisted.dart';
 import 'package:visatree/model/getScholarShipModel.dart';
-import 'package:visatree/session%20management.dart';
-import 'package:visatree/snackbar.dart';
-import 'package:visatree/util/images.dart';
+import 'package:visatree/util/ApiUrl.dart';
 
-import '../screens/appcontants.dart';
+import 'package:visatree/util/images.dart';
+import 'package:visatree/util/session%20management.dart';
+
+
 
 class SearchUnivercityController extends GetxController {
   var isLoading = false.obs;

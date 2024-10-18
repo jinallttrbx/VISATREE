@@ -3,15 +3,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:visatree/ApiUrl.dart';
-import 'package:visatree/alertBoxes.dart';
+import 'package:visatree/Widgets/snackbar.dart';
+
 import 'package:visatree/model/countrymodel.dart';
 import 'package:visatree/model/getCourseModel.dart';
-import 'package:visatree/model/getLevellModel.dart';
 import 'package:visatree/model/getProgramModel.dart';
-import 'package:visatree/model/getcountrylevellist.dart';
-import 'package:visatree/session%20management.dart';
-import 'package:visatree/snackbar.dart';
+import 'package:visatree/util/ApiUrl.dart';
+import 'package:visatree/util/session%20management.dart';
 
 class allExtraexpemcesController extends GetxController {
   var isLoading = false.obs;

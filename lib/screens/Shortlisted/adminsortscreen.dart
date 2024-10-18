@@ -3,19 +3,19 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:get/get.dart';
-import 'package:visatree/ApiUrl.dart';
-import 'package:visatree/alertBoxes.dart';
+import 'package:visatree/Widgets/alertBoxes.dart';
+import 'package:visatree/util/ApiUrl.dart';
+import 'package:visatree/util/appcontants.dart';
 import 'package:visatree/util/images.dart';
-import 'package:visatree/const_text.dart';
 import 'package:visatree/controller/Shortlistbyusercontroller.dart';
 import 'package:visatree/controller/documentcontroller.dart';
 import 'package:visatree/controller/homeController.dart';
 import 'package:visatree/model/getLevellModel.dart';
 import 'package:visatree/model/getProgramCourse.dart';
 import 'package:visatree/model/getlevelprogram.dart';
-import 'package:visatree/screens/appcontants.dart';
 import 'package:http/http.dart' as http;
-import 'package:visatree/session%20management.dart';
+
+import 'package:visatree/util/session%20management.dart';
 
 class AdminShortlisted extends StatefulWidget {
   AdminShortlisted({super.key});
@@ -39,270 +39,270 @@ class _AdminShortlistedState extends State<AdminShortlisted> {
     Container(
       height: MediaQuery.of(context).size.height/2,
       child: const Center(child: Text("No Suggested Universities"),),):
-   RefreshIndicator(child:  ListView.builder(
-       itemCount: universityController.shortbyadmin.length,
-       shrinkWrap: true,
-       itemBuilder: (context, position) {
-         return Padding(
-           padding: const EdgeInsets.only(top: 15),
-           child: Container(
-             margin: EdgeInsets.only(left: 10,right: 10,bottom: 10),
-             decoration: ShapeDecoration(
-               color: Colors.white,
-               shape: RoundedRectangleBorder(
-                 side: const BorderSide(
-                     width: 0.50, color: Color(0x7F43749E)),
-                 borderRadius: BorderRadius.circular(20),
-               ),
-               shadows: const [
-                 BoxShadow(
-                   color: Color(0x3F43749E),
-                   blurRadius: 4,
-                   offset: Offset(0, 2),
-                   spreadRadius: 0,
-                 ),
-                 BoxShadow(
-                   color: Color(0x3F43749E),
-                   blurRadius: 4,
-                   offset: Offset(2, 0),
-                   spreadRadius: 0,
-                 ),
-                 BoxShadow(
-                   color: Color(0x3F43749E),
-                   blurRadius: 4,
-                   offset: Offset(2, 0),
-                   spreadRadius: 0,
-                 )
-               ],
-             ),
-             child: Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: [
-                 ClipRRect(
-                   borderRadius: const BorderRadius.only(
-                       topLeft: Radius.circular(20),
-                       topRight: Radius.circular(20)),
-                   child: Image.network(
-                     "${universityController.shortbyadmin[position].image}/${universityController.shortbyadmin[position].universityBanner}",
-                     height: 150,
-                     fit: BoxFit.fitWidth,
-                     width: double.infinity,
-                   ),
-                 ),
-                 Padding(
-                   padding: const EdgeInsets.all(10),
-                   child: Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     children: [
-                       Text(
-                         universityController
-                             .shortbyadmin[position].university,
-                         style: const TextStyle(
-                           color: Colors.black,
-                           fontSize: 18,
-                           fontFamily: 'Poppins',
-                           fontWeight: FontWeight.w600,
-                         ),
-                       ),
-                       Row(
-                         children: [
-                           const Icon(Icons.location_on_outlined),
-                           Text(
-                             universityController.shortbyadmin[position]
-                                 .country,
-                             style: TextStyle(
-                               color: Colors.black
-                                   .withOpacity(0.800000011920929),
-                               fontSize: 15,
-                               fontFamily: 'Poppins',
-                               fontWeight: FontWeight.w500,
-                             ),
-                           ),
-                         ],
-                       ),
-                       Padding(
-                         padding: EdgeInsets.only(left: 10),
-                         child: Text(
-                           universityController.shortbyadmin[position]
-                               .course ??
-                               "",
-                           style: TextStyle(
-                             color: Colors.black
-                                 .withOpacity(0.800000011920929),
-                             fontSize: 12,
-                             fontFamily: 'Poppins',
-                             fontWeight: FontWeight.w500,
-                           ),
-                         ),
-                       ),
-                       Padding(
-                         padding: EdgeInsets.only(left: 10),
-                         child: Text(
-                           universityController.shortbyadmin[position]
-                               .program ??
-                               "",
-                           style: TextStyle(
-                             color: Colors.black
-                                 .withOpacity(0.800000011920929),
-                             fontSize: 10,
-                             fontFamily: 'Poppins',
-                             fontWeight: FontWeight.w500,
-                           ),
-                         ),
-                       ),
-                       Padding(
-                         padding: EdgeInsets.only(left: 10),
-                         child: Text(
-                           universityController.shortbyadmin[position]
-                               .level ??
-                               "",
-                           style: TextStyle(
-                             color: Colors.black
-                                 .withOpacity(0.800000011920929),
-                             fontSize: 10,
-                             fontFamily: 'Poppins',
-                             fontWeight: FontWeight.w500,
-                           ),
-                         ),
-                       ),
-                       const Divider(
-                         color: Colors.black,
-                       ),
-                       const Text(
-                         'Eligibility',
-                         style: TextStyle(
-                           color: Colors.black,
-                           fontSize: 16,
-                           fontFamily: 'Poppins',
-                           fontWeight: FontWeight.w600,
-                         ),
-                       ),
-                       const SizedBox(
-                         height: 10,
-                       ),
-                       Row(
-                         children: [
-                           Expanded(
-                             child: Text(
-                               'TOEFL : ${universityController.shortbyadmin[position].toefl}',
-                               style: TextStyle(
-                                 color: Colors.black.withOpacity(
-                                     0.800000011920929),
-                                 fontSize: 16,
-                                 fontFamily: 'Poppins',
-                                 fontWeight: FontWeight.w500,
-                               ),
-                             ),
-                           ),
-                           Expanded(
-                             child: Text(
-                               'IELTS : ${universityController.shortbyadmin[position].ielts}',
-                               style: TextStyle(
-                                 color: Colors.black.withOpacity(
-                                     0.800000011920929),
-                                 fontSize: 16,
-                                 fontFamily: 'Poppins',
-                                 fontWeight: FontWeight.w500,
-                               ),
-                             ),
-                           ),
-                           Expanded(
-                             child: Text(
-                               'GRE : ${universityController.shortbyadmin[position].gre} ',
-                               style: TextStyle(
-                                 color: Colors.black.withOpacity(
-                                     0.800000011920929),
-                                 fontSize: 16,
-                                 fontFamily: 'Poppins',
-                                 fontWeight: FontWeight.w500,
-                               ),
-                             ),
-                           ),
-                         ],
-                       ),
-                     ],
-                   ),
-                 ),
-                 // universityController.shortbyadmin[position]?.isApplied ??
-                 //     false
-                 //     ? Row(
-                 //   mainAxisAlignment:
-                 //   MainAxisAlignment.center,
-                 //   children: const [
-                 //     Padding(
-                 //       padding: EdgeInsets.all(10.0),
-                 //       child: Text(
-                 //         "Applied Already",
-                 //         style: TextStyle(
-                 //           color: AppColors.primaryColor,
-                 //           fontWeight: FontWeight.bold,
-                 //           fontSize: 16,
-                 //         ),
-                 //       ),
-                 //     ),
-                 //   ],
-                 // )
-                 //:
-                 Row(
-                   children: [
-                     Expanded(
-                       child: SizedBox(
-                         height: 50,
-                         child: ElevatedButton(
-                           onPressed: () async {
-                             ApplyUniversity(
-                                 context,
-                                 universityController
-                                     .shortbyadmin[
-                                 position]
-                                     .id
-                                     .toString(),
-                                 universityController
-                                     .shortbyadmin[
-                                 position]
-                                     .levelId
-                                     .toString(),
-                                 universityController
-                                     .shortbyadmin[
-                                 position]
-                                     .programId
-                                     .toString(),
-                                 universityController
-                                     .shortbyadmin[
-                                 position]
-                                     .courseId
-                                     .toString());
-                           },
-                           style: ElevatedButton.styleFrom(
-                             backgroundColor:
-                             AppColors.primaryColor,
-                             shape:
-                             const RoundedRectangleBorder(
-                               borderRadius:
-                               BorderRadius.only(
-                                 bottomLeft:
-                                 Radius.circular(20),
-                                 bottomRight:
-                                 Radius.circular(20),
-                               ),
-                             ),
-                           ),
-                           child: Text(
-                             "Apply Now",
-                             style: TextStyle(fontSize: 18),
-                           ),
-                         ),
-                       ),
-                     ),
-                   ],
-                 ),
-               ],
-             ),
-           ),
-         );
-       }), onRefresh: ()async {
-    await universityController.getadminShortUniversity();
-   }));
+    RefreshIndicator(child:  ListView.builder(
+        itemCount: universityController.shortbyadmin.length,
+        shrinkWrap: true,
+        itemBuilder: (context, position) {
+          return Padding(
+            padding: const EdgeInsets.only(top: 15),
+            child: Container(
+              margin: EdgeInsets.only(left: 10,right: 10,bottom: 10),
+              decoration: ShapeDecoration(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(
+                      width: 0.50, color: Color(0x7F43749E)),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                shadows: const [
+                  BoxShadow(
+                    color: Color(0x3F43749E),
+                    blurRadius: 4,
+                    offset: Offset(0, 2),
+                    spreadRadius: 0,
+                  ),
+                  BoxShadow(
+                    color: Color(0x3F43749E),
+                    blurRadius: 4,
+                    offset: Offset(2, 0),
+                    spreadRadius: 0,
+                  ),
+                  BoxShadow(
+                    color: Color(0x3F43749E),
+                    blurRadius: 4,
+                    offset: Offset(2, 0),
+                    spreadRadius: 0,
+                  )
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20)),
+                    child: Image.network(
+                      "${universityController.shortbyadmin[position].image}/${universityController.shortbyadmin[position].universityBanner}",
+                      height: 150,
+                      fit: BoxFit.fitWidth,
+                      width: double.infinity,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          universityController
+                              .shortbyadmin[position].university,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            const Icon(Icons.location_on_outlined),
+                            Text(
+                              universityController.shortbyadmin[position]
+                                  .country,
+                              style: TextStyle(
+                                color: Colors.black
+                                    .withOpacity(0.800000011920929),
+                                fontSize: 15,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Text(
+                            universityController.shortbyadmin[position]
+                                .course ??
+                                "",
+                            style: TextStyle(
+                              color: Colors.black
+                                  .withOpacity(0.800000011920929),
+                              fontSize: 12,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Text(
+                            universityController.shortbyadmin[position]
+                                .program ??
+                                "",
+                            style: TextStyle(
+                              color: Colors.black
+                                  .withOpacity(0.800000011920929),
+                              fontSize: 10,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Text(
+                            universityController.shortbyadmin[position]
+                                .level ??
+                                "",
+                            style: TextStyle(
+                              color: Colors.black
+                                  .withOpacity(0.800000011920929),
+                              fontSize: 10,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          color: Colors.black,
+                        ),
+                        const Text(
+                          'Eligibility',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'TOEFL : ${universityController.shortbyadmin[position].toefl}',
+                                style: TextStyle(
+                                  color: Colors.black.withOpacity(
+                                      0.800000011920929),
+                                  fontSize: 16,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                'IELTS : ${universityController.shortbyadmin[position].ielts}',
+                                style: TextStyle(
+                                  color: Colors.black.withOpacity(
+                                      0.800000011920929),
+                                  fontSize: 16,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                'GRE : ${universityController.shortbyadmin[position].gre} ',
+                                style: TextStyle(
+                                  color: Colors.black.withOpacity(
+                                      0.800000011920929),
+                                  fontSize: 16,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  // universityController.shortbyadmin[position]?.isApplied ??
+                  //     false
+                  //     ? Row(
+                  //   mainAxisAlignment:
+                  //   MainAxisAlignment.center,
+                  //   children: const [
+                  //     Padding(
+                  //       padding: EdgeInsets.all(10.0),
+                  //       child: Text(
+                  //         "Applied Already",
+                  //         style: TextStyle(
+                  //           color: AppColors.primaryColor,
+                  //           fontWeight: FontWeight.bold,
+                  //           fontSize: 16,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // )
+                  //:
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          height: 50,
+                          child: ElevatedButton(
+                            onPressed: () async {
+                              ApplyUniversity(
+                                  context,
+                                  universityController
+                                      .shortbyadmin[
+                                  position]
+                                      .id
+                                      .toString(),
+                                  universityController
+                                      .shortbyadmin[
+                                  position]
+                                      .levelId
+                                      .toString(),
+                                  universityController
+                                      .shortbyadmin[
+                                  position]
+                                      .programId
+                                      .toString(),
+                                  universityController
+                                      .shortbyadmin[
+                                  position]
+                                      .courseId
+                                      .toString());
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                              AppColors.primaryColor,
+                              shape:
+                              const RoundedRectangleBorder(
+                                borderRadius:
+                                BorderRadius.only(
+                                  bottomLeft:
+                                  Radius.circular(20),
+                                  bottomRight:
+                                  Radius.circular(20),
+                                ),
+                              ),
+                            ),
+                            child: Text(
+                              "Apply Now",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        }), onRefresh: ()async {
+      await universityController.getadminShortUniversity();
+    }));
   }
 
   void ApplyUniversity(BuildContext context, String universityid, String levelid,
@@ -386,7 +386,7 @@ class _AdminShortlistedState extends State<AdminShortlisted> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
                             shape: RoundedRectangleBorder(
-                              side: const BorderSide(
+                              side:  BorderSide(
                                 width: 0.50,
                                 color: AppColors.primaryColor2,
                               ),
@@ -463,8 +463,8 @@ class _AdminShortlistedState extends State<AdminShortlisted> {
                 right: 20,
                 left: 20),
           ));
-          universityController.getadminShortUniversity();
-          universityController.shortbyadmin;
+          await universityController.getadminShortUniversity();
+         await universityController.shortbyadmin;
           hideLoadingDialog();
         } else {
           Navigator.of(context).pop();
@@ -490,8 +490,8 @@ class _AdminShortlistedState extends State<AdminShortlisted> {
                 right: 20,
                 left: 20),
           ));
-          universityController.getadminShortUniversity();
-          universityController.shortbyadmin;
+         await universityController.getadminShortUniversity();
+         await universityController.shortbyadmin;
           hideLoadingDialog();
           Get.back();
         }

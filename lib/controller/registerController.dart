@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:visatree/ApiUrl.dart';
-import 'package:visatree/alertBoxes.dart';
-import 'package:visatree/screens/curvedbutton.dart';
-import 'package:visatree/util/images.dart';
+import 'package:visatree/Widgets/alertBoxes.dart';
 
-import '../session management.dart';
+import 'package:visatree/screens/homeScrenn/curvedbutton.dart';
+import 'package:visatree/util/ApiUrl.dart';
+import 'package:visatree/util/images.dart';
+import 'package:visatree/util/session%20management.dart';
+
+
 
 class RegisterController extends GetxController {
   var isLoading = false.obs;

@@ -1,11 +1,11 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
-import 'package:visatree/screens/chatscreen.dart';
+import 'package:visatree/screens/chatscreen/chatscreen.dart';
 
 Future<void> handleBackgroundMessage(RemoteMessage message) async {
   print("handlebackgroundMessage");
-  Get.to(const ChatScreen());
+  Get.to( ChatScreen());
 }
 
 class FirebaseApi {
@@ -19,7 +19,7 @@ class FirebaseApi {
     //     builder: (_) => const ChatScreen(),
     //   ),
     // );
-    Get.to(const ChatScreen());
+    Get.to( ChatScreen());
   }
 
   final _androidChannel = const AndroidNotificationChannel(
@@ -40,7 +40,7 @@ class FirebaseApi {
         onDidReceiveNotificationResponse: (NotificationResponse payload) {
       print("rakesh");
       print(payload.payload);
-      Get.to(const ChatScreen());
+      Get.to( ChatScreen());
       // if (payload.payload == null) return;
       // final message = RemoteMessage.fromMap(jsonDecode(payload.payload!));
       // handleMessage(message);
@@ -48,7 +48,7 @@ class FirebaseApi {
             (NotificationResponse payload) {
       print("satola");
       print(payload.payload);
-      Get.to(const ChatScreen());
+      Get.to( ChatScreen());
       // if (payload.payload == null) return;
       // final message = RemoteMessage.fromMap(jsonDecode(payload.payload!));
       // handleMessage(message);

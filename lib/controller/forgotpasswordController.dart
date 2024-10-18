@@ -4,16 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
-import 'package:visatree/ApiUrl.dart';
-import 'package:visatree/screens/loginscreen.dart';
-import 'package:visatree/snackbar.dart';
+import 'package:visatree/screens/authentication/loginscreen.dart';
+import 'package:visatree/util/ApiUrl.dart';
 
 class ForgotPasswordController extends GetxController {
   var isLoading = false.obs;
   var isLogin = false.obs;
   var statusCode = 200.obs;
 
-  forgotpassword(String email,BuildContext context) async {
+  forgotpassword(String email, BuildContext context) async {
     isLogin.value == true;
     try {
       final response = await http.post(
@@ -23,27 +22,26 @@ class ForgotPasswordController extends GetxController {
       Map<String, dynamic> data = jsonDecode(response.body);
       print(response.body);
       if (response.statusCode == 200) {
-
-       // if (data["status"] == true) {
-          isLogin.value = false;
-      //  } else {
-          isLogin.value = false;
-         // _launchURL();
-          ScaffoldMessenger.of(context).showSnackBar( SnackBar(
-            content: Text(data['message']),
-            duration: Duration(seconds: 2),
-          ));
+        // if (data["status"] == true) {
+        isLogin.value = false;
+        //  } else {
+        isLogin.value = false;
+        // _launchURL();
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(data['message']),
+          duration: Duration(seconds: 2),
+        ));
         Get.to(LoginScreen());
-      //  }
-      }else{
-        ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+        //  }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(data['message']),
           duration: Duration(seconds: 2),
         ));
       }
     } catch (e) {
       isLogin.value = false;
-      ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(e.toString()),
         duration: Duration(seconds: 2),
       ));

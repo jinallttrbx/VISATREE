@@ -3,13 +3,15 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:visatree/ApiUrl.dart';
-import 'package:visatree/alertBoxes.dart';
+import 'package:visatree/Widgets/alertBoxes.dart';
+import 'package:visatree/Widgets/snackbar.dart';
+
 import 'package:visatree/model/eventmodel.dart';
-import 'package:visatree/screens/curvedbutton.dart';
-import 'package:visatree/session%20management.dart';
-import 'package:visatree/snackbar.dart';
+import 'package:visatree/screens/homeScrenn/curvedbutton.dart';
+import 'package:visatree/util/ApiUrl.dart';
+
 import 'package:visatree/util/images.dart';
+import 'package:visatree/util/session%20management.dart';
 
 class EventController extends GetxController {
   var isLoading = false.obs;
@@ -19,7 +21,6 @@ class EventController extends GetxController {
   var isLogin = false.obs;
 
   getEvent() async {
-    print(ApiUrl.getevent);
     String token = await share.istoken();
     EventList.value = [];
     isLoading.value = true;
@@ -51,7 +52,6 @@ class EventController extends GetxController {
     showLoadingDialog();
     String token = await share.istoken();
     String id = await share.isuserid();
-    String name = await share.isfirstname();
     try {
       final response = await http.post(
         Uri.parse("${ApiUrl.baseurl}evet/store"),
@@ -63,14 +63,11 @@ class EventController extends GetxController {
       );
       if (response.statusCode == 200) {
         Get.off(() => const RootWidget());
-        print(response.statusCode);
-        print(id);
-        print(eventid);
+
         Map<String, dynamic> data = jsonDecode(response.body);
         if (data["status"] == true) {
           ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
             content: Container(
-              //color: Colors.transparent.withOpacity(0.25),
               child: Column(
                 children: [
                   Image.asset(
@@ -99,7 +96,6 @@ class EventController extends GetxController {
         } else {
           ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
             content: Container(
-              //color: Colors.transparent.withOpacity(0.25),
               child: Column(
                 children: [
                   Image.asset(
@@ -124,12 +120,9 @@ class EventController extends GetxController {
           ));
           hideLoadingDialog();
           Get.off(() => const RootWidget());
-
-
         }
       }
     } catch (e) {
-      print(e.toString());
     }
   }
 }
