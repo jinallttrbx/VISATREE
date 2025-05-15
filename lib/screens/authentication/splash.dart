@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:visatree/screens/authentication/loginscreen.dart';
-import 'package:visatree/screens/homeScrenn/curvedbutton.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/screens/authentication/loginscreen.dart';
+import 'package:visatreenew/screens/homeScrenn/curvedbutton.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
-import 'package:visatree/util/images.dart';
+import 'package:visatreenew/util/images.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/const_text.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/controller/changepasswordcontroller.dart';
+import 'package:visatreenew/controller/changepasswordcontroller.dart';
 
 
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword({super.key});

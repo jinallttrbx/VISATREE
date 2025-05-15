@@ -360,41 +360,259 @@
 //     Navigator.pop(context);
 //   }
 // }
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:visatree/Widgets/const_text.dart';
-import 'package:visatree/model/chat_model.dart';
-import 'package:visatree/util/ApiUrl.dart';
-import 'package:visatree/util/appcontants.dart';
-import 'package:visatree/util/images.dart';
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
+import 'package:visatreenew/model/chat_model.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
+import 'package:visatreenew/util/appcontants.dart';
+import 'package:visatreenew/util/images.dart';
+import 'package:visatreenew/util/session%20management.dart';
 import 'package:http/http.dart'as http;
 
-class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+// class ChatScreen extends StatefulWidget {
+//   const ChatScreen({super.key});
+//
+//   @override
+//   _ChatScreenState createState() => _ChatScreenState();
+// }
+//
+// class _ChatScreenState extends State<ChatScreen> {
+//   final TextEditingController _controller = TextEditingController();
+//   //final List<SingleChatData> _messages = [];
+//   List<SingleChatData> _messages = [];
+//   SessionManagement session=SessionManagement();
+//   Timer? _timer;
+//
+//
+//   @override
+//   void initState() {
+//
+//     getChat();
+//     chatNotification();
+//     super.initState();
+//    // _startApiPolling();
+//   }
+//   void _startApiPolling() {
+//     _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+//       getChat();
+//     });
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         titleSpacing: 0,
+//         title: Row(
+//           children: [
+//             boldtext(Colors.white, 18, "Chat With Us"),
+//           ],
+//         ),
+//         shape: const RoundedRectangleBorder(
+//           borderRadius: BorderRadius.only(
+//             bottomLeft: Radius.circular(10),
+//             bottomRight: Radius.circular(10),
+//           ),
+//         ),
+//         elevation: 0,
+//         backgroundColor: AppColors.primaryColor,
+//       ),
+//       body: Stack(
+//         children: [
+//           Column(
+//             children: [
+//               Expanded(
+//                 child: ListView.builder(
+//                   reverse: true, // To start from the bottom of the list
+//                   itemCount: _messages.length,
+//                   itemBuilder: (context, index) {
+//                     final message = _messages[_messages.length - 1 - index];
+//                     return Align(
+//                       alignment: _messages[index].type=="sender" ? Alignment.centerRight : Alignment.centerLeft,
+//                       child: Container(
+//                         margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+//                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+//                         decoration: BoxDecoration(
+//                           color:  _messages[index].type=="sender" ? AppColors.primaryColor : Colors.grey[300],
+//                           borderRadius: BorderRadius.circular(10),
+//                         ),
+//                         child: Column(
+//
+//                           crossAxisAlignment:
+//                           _messages[index].type=="sender" ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+//                           children: [
+//                             Text(
+//                               _messages[index].message.toString()??"",
+//                               style: TextStyle(fontSize: 16,color: _messages[index].type=="sender"?AppColors.white:AppColors.black ),
+//                             ),
+//                             SizedBox(height: 5),
+//                             // Text(
+//                             //   _messages[index].createdAt.toString()??"",
+//                             //   style: TextStyle(fontSize: 16),
+//                             // ),
+//
+//                           ],
+//                         ),
+//                       ),
+//                     );
+//                   },
+//                 ),
+//               ),
+//               Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: Row(
+//                   children: [
+//                     Expanded(
+//                       child: TextField(
+//                         controller: _controller,
+//                         decoration: InputDecoration(
+//                           hintText: "Type a message",
+//                           filled: true,
+//                           fillColor: Colors.grey[200],
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(30),
+//                             borderSide: BorderSide.none,
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                     SizedBox(width: 8),
+//                     FloatingActionButton(
+//                       onPressed: (){
+//
+//                         if (_controller.text.isNotEmpty) {
+//                           // await chatController.addChat(controller.text);
+//                           addChat(_controller.text);
+//                           _controller.clear();
+//                         }
+//
+//                       },
+//                       backgroundColor: AppColors.primaryColor,
+//                       child: Icon(Icons.send, color: Colors.white),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ],
+//       )
+//     );
+//   }
+//
+//   addChat(String chat,) async {
+//     SessionManagement share = SessionManagement();
+//     String token = await share.istoken();
+//     String userId = await share.isuserid();
+//     var body = {"sender_id": userId.toString(), "message": chat,};
+//     final response = await http.post(
+//       Uri.parse(ApiUrl.addchat),
+//       headers: {"Authorization": "Bearer $token"},
+//       body: body,
+//     );
+//     if (response.statusCode == 200) {
+//       addStaticChat(chat, int.parse(userId), 'sender');
+//       getChat();
+//     } else {
+//       print(response.body);
+//     }
+//     //getChat();
+//   }
+//   addStaticChat(String msg, int senderId, String type) {
+//     _messages.add(
+//       SingleChatData(
+//         message: msg,
+//         senderId: senderId,
+//         type: type,
+//       ),
+//     );
+//     // getChat();
+//   }
+//   getChat() async {
+//     setState(() {
+//       //isLoading=true;
+//     });
+//     _messages = [];
+//     SessionManagement share = SessionManagement();
+//     String token = await share.istoken();
+//     String id = await share.isuserid();
+//     await share.setIsInChat(true);
+//
+//     final response = await http.get(
+//         Uri.parse("${ApiUrl.baseurl}get_chat"),
+//         headers: {"Authorization": "Bearer $token"});
+//     print(response.body);
+//     final data = ChatModel.fromJson(jsonDecode(response.body));
+//     if (response.statusCode == 200) {
+//       _messages.addAll(data.data ?? []);
+//       setState(() {
+//
+//         //isLoading=false;
+//       });
+//     } else {}
+//   }
+//
+//   Future<void> chatNotification() async {
+//     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
+//   }
+//
+//   Future<void> handleBackgroundMessage(RemoteMessage message) async {
+//     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+//       RemoteNotification? notification = message.notification;
+//       AndroidNotification? android = message.notification?.android;
+//       if (notification != null && android != null) {
+//         _messages.add(
+//           SingleChatData(
+//               message: notification.title ?? 'This Notification from Admin',
+//               senderId: 1,
+//               type: 'admin'),
+//         );
+//         setState(() {});
+//       }
+//     });
+//   }
+// }
+
+
+//Update your ChatScreen to prevent blinking by preserving and updating messages intelligently
+
+class ChatScreen1 extends StatefulWidget {
+  const ChatScreen1({super.key});
 
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  _ChatScreen1State createState() => _ChatScreen1State();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _ChatScreen1State extends State<ChatScreen1> {
   final TextEditingController _controller = TextEditingController();
-  //final List<SingleChatData> _messages = [];
   List<SingleChatData> _messages = [];
-  SessionManagement session=SessionManagement();
-
-
+  SessionManagement session = SessionManagement();
+  Timer? _timer;
 
   @override
   void initState() {
-
-    getChat();
-    chatNotification();
     super.initState();
+    chatNotification();
+    _startApiPolling();
+    getChat();
   }
 
+  void _startApiPolling() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      getChat();
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -415,139 +633,133 @@ class _ChatScreenState extends State<ChatScreen> {
         elevation: 0,
         backgroundColor: AppColors.primaryColor,
       ),
-      body: Stack(
+      body: Column(
         children: [
-          Column(
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  reverse: true, // To start from the bottom of the list
-                  itemCount: _messages.length,
-                  itemBuilder: (context, index) {
-                    final message = _messages[_messages.length - 1 - index];
-                    return Align(
-                      alignment: _messages[index].type=="sender" ? Alignment.centerRight : Alignment.centerLeft,
-                      child: Container(
-                        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                        decoration: BoxDecoration(
-                          color:  _messages[index].type=="sender" ? AppColors.primaryColor : Colors.grey[300],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Column(
+          Expanded(
+            child: ListView.builder(
+              reverse: true, // To start from the bottom of the list
+              itemCount: _messages.length,
+              itemBuilder: (context, index) {
+                final message = _messages[_messages.length - 1 - index];
+                return Align(
+                  alignment: _messages[index].type=="sender" ? Alignment.centerRight : Alignment.centerLeft,
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    decoration: BoxDecoration(
+                      color:  _messages[index].type=="sender" ? AppColors.primaryColor : Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
 
-                          crossAxisAlignment:
-                          _messages[index].type=="sender" ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              _messages[index].message.toString()??"",
-                              style: TextStyle(fontSize: 16,color: _messages[index].type=="sender"?AppColors.white:AppColors.black ),
-                            ),
-                            SizedBox(height: 5),
-                            // Text(
-                            //   _messages[index].createdAt.toString()??"",
-                            //   style: TextStyle(fontSize: 16),
-                            // ),
-
-                          ],
+                      crossAxisAlignment:
+                      _messages[index].type=="sender" ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          _messages[index].message.toString()??"",
+                          style: TextStyle(fontSize: 16,color: _messages[index].type=="sender"?AppColors.white:AppColors.black ),
                         ),
+                        SizedBox(height: 5),
+                        // Text(
+                        //   _messages[index].createdAt.toString()??"",
+                        //   style: TextStyle(fontSize: 16),
+                        // ),
+
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      hintText: "Type a message",
+                      filled: true,
+                      fillColor: Colors.grey[200],
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide.none,
                       ),
-                    );
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                FloatingActionButton(
+                  onPressed: () {
+                    if (_controller.text.isNotEmpty) {
+                      addChat(_controller.text);
+                      _controller.clear();
+                    }
                   },
+                  backgroundColor: AppColors.primaryColor,
+                  child: const Icon(Icons.send, color: Colors.white),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: _controller,
-                        decoration: InputDecoration(
-                          hintText: "Type a message",
-                          filled: true,
-                          fillColor: Colors.grey[200],
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide.none,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                    FloatingActionButton(
-                      onPressed: (){
-
-                        if (_controller.text.isNotEmpty) {
-                          // await chatController.addChat(controller.text);
-                          addChat(_controller.text);
-                          _controller.clear();
-                        }
-
-                      },
-                      backgroundColor: AppColors.primaryColor,
-                      child: Icon(Icons.send, color: Colors.white),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
-      )
+      ),
     );
   }
 
-  addChat(String chat,) async {
-    SessionManagement share = SessionManagement();
-    String token = await share.istoken();
-    String userId = await share.isuserid();
-    var body = {"sender_id": userId.toString(), "message": chat,};
+  addChat(String chat) async {
+    final token = await session.istoken();
+    final userId = await session.isuserid();
+    final body = {"sender_id": userId.toString(), "message": chat};
+
     final response = await http.post(
       Uri.parse(ApiUrl.addchat),
       headers: {"Authorization": "Bearer $token"},
       body: body,
     );
+
     if (response.statusCode == 200) {
       addStaticChat(chat, int.parse(userId), 'sender');
       getChat();
     } else {
       print(response.body);
     }
-    //getChat();
   }
-  addStaticChat(String msg, int senderId, String type) {
-    _messages.add(
-      SingleChatData(
+
+  void addStaticChat(String msg, int senderId, String type) {
+    setState(() {
+      _messages.add(SingleChatData(
         message: msg,
         senderId: senderId,
         type: type,
-      ),
-    );
-    // getChat();
-  }
-  getChat() async {
-    setState(() {
-      //isLoading=true;
+      ));
     });
-    _messages = [];
-    SessionManagement share = SessionManagement();
-    String token = await share.istoken();
-    String id = await share.isuserid();
-    await share.setIsInChat(true);
+  }
+
+  getChat() async {
+    final token = await session.istoken();
+    final id = await session.isuserid();
+    await session.setIsInChat(true);
 
     final response = await http.get(
-        Uri.parse("${ApiUrl.baseurl}get_chat"),
-        headers: {"Authorization": "Bearer $token"});
-    print(response.body);
-    final data = ChatModel.fromJson(jsonDecode(response.body));
-    if (response.statusCode == 200) {
-      _messages.addAll(data.data ?? []);
-      setState(() {
+      Uri.parse("${ApiUrl.baseurl}get_chat"),
+      headers: {"Authorization": "Bearer $token"},
+    );
 
-        //isLoading=false;
-      });
-    } else {}
+    if (response.statusCode == 200) {
+      final data = ChatModel.fromJson(jsonDecode(response.body));
+      final newMessages = data.data ?? [];
+
+      if (!listEquals(_messages, newMessages)) {
+        setState(() {
+          _messages = newMessages;
+        });
+      }
+    } else {
+      print("Failed to fetch messages: ${response.body}");
+    }
   }
 
   Future<void> chatNotification() async {
@@ -556,16 +768,16 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Future<void> handleBackgroundMessage(RemoteMessage message) async {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      RemoteNotification? notification = message.notification;
-      AndroidNotification? android = message.notification?.android;
+      final notification = message.notification;
+      final android = message.notification?.android;
       if (notification != null && android != null) {
-        _messages.add(
-          SingleChatData(
-              message: notification.title ?? 'This Notification from Admin',
-              senderId: 1,
-              type: 'admin'),
-        );
-        setState(() {});
+        setState(() {
+          _messages.add(SingleChatData(
+            message: notification.title ?? 'This Notification from Admin',
+            senderId: 1,
+            type: 'admin',
+          ));
+        });
       }
     });
   }

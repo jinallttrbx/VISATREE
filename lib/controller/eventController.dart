@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:visatree/Widgets/alertBoxes.dart';
-import 'package:visatree/Widgets/snackbar.dart';
+import 'package:visatreenew/Widgets/alertBoxes.dart';
+import 'package:visatreenew/Widgets/snackbar.dart';
 
-import 'package:visatree/model/eventmodel.dart';
-import 'package:visatree/screens/homeScrenn/curvedbutton.dart';
-import 'package:visatree/util/ApiUrl.dart';
+import 'package:visatreenew/model/eventmodel.dart';
+import 'package:visatreenew/screens/homeScrenn/curvedbutton.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
 
-import 'package:visatree/util/images.dart';
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/util/images.dart';
+import 'package:visatreenew/util/session%20management.dart';
 
 class EventController extends GetxController {
   var isLoading = false.obs;
@@ -71,7 +71,7 @@ class EventController extends GetxController {
               child: Column(
                 children: [
                   Image.asset(
-                    images.logomain,
+                    images.appiconload,
                     height: 100,
                   ),
                   Text(

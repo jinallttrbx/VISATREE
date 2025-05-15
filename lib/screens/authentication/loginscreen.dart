@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/LoadingLayout.dart';
-import 'package:visatree/Widgets/const_text.dart';
+import 'package:visatreenew/Widgets/LoadingLayout.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/controller/loginController.dart';
-import 'package:visatree/screens/authentication/signup.dart';
-import 'package:visatree/screens/authentication/changepassword.dart';
-import 'package:visatree/screens/authentication/forget_password.dart';
+import 'package:visatreenew/controller/loginController.dart';
+import 'package:visatreenew/screens/authentication/signup.dart';
+import 'package:visatreenew/screens/authentication/changepassword.dart';
+import 'package:visatreenew/screens/authentication/forget_password.dart';
 
-import 'package:visatree/util/images.dart';
+import 'package:visatreenew/util/images.dart';
 
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -49,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 // color: Color.fromARGB(255, 5, 88, 113),
                 child: SingleChildScrollView(
+
                   child: Form(
                     // key: _formKey,
                     child: Column(
@@ -140,9 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ]),
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+
                           defaultText("Email"),
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,
@@ -166,9 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               "Your Email",
                             ),
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
+
                           defaultText("Password"),
                           TextFormField(
                             obscureText: passwordVisible,
@@ -216,9 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
 
-                          const SizedBox(
-                            height: 5,
-                          ),
+
                           Align(
                             alignment: Alignment.centerRight,
                             child: TextButton(
@@ -231,9 +226,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       TextStyle(color: AppColors.primaryColor),
                                 )),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+
                           InkWell(
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 60),
@@ -308,45 +301,38 @@ class WelcomeContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.311,
       width: double.maxFinite,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(
-            height: 30,
-          ),
+          SizedBox(height: 50,),
           Image.asset(
-            images.logo, fit: BoxFit.fill,
-            width: 300,
+            images.logomain1,width: 200,height: 200,
+
             // height: 100,
           ),
-          const SizedBox(
-            height: 30,
-          ),
-          const Text(
-            'Welcome ',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 36,
-              // fontFamily: 'Poppins',
-              fontWeight: FontWeight.w600,
-              letterSpacing: 0.72,
-            ),
-          ),
-          Text(
-            'Please enter your details',
-            style: TextStyle(
-              color: Colors.black.withOpacity(0.4000000059604645),
-              fontSize: 16,
-              // fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
-              letterSpacing: 0.32,
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 30,)
+          // const Text(
+          //   'Welcome ',
+          //   style: TextStyle(
+          //     color: Colors.black,
+          //     fontSize: 36,
+          //     // fontFamily: 'Poppins',
+          //     fontWeight: FontWeight.w600,
+          //     letterSpacing: 0.72,
+          //   ),
+          // ),
+          // Text(
+          //   'Please enter your details',
+          //   style: TextStyle(
+          //     color: Colors.black.withOpacity(0.4000000059604645),
+          //     fontSize: 16,
+          //     // fontFamily: 'Poppins',
+          //     fontWeight: FontWeight.w500,
+          //     letterSpacing: 0.32,
+          //   ),
+          // ),
+
         ],
       ),
     );

@@ -3,19 +3,19 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/alertBoxes.dart';
-import 'package:visatree/util/ApiUrl.dart';
-import 'package:visatree/util/appcontants.dart';
-import 'package:visatree/util/images.dart';
-import 'package:visatree/controller/Shortlistbyusercontroller.dart';
-import 'package:visatree/controller/documentcontroller.dart';
-import 'package:visatree/controller/homeController.dart';
-import 'package:visatree/model/getLevellModel.dart';
-import 'package:visatree/model/getProgramCourse.dart';
-import 'package:visatree/model/getlevelprogram.dart';
+import 'package:visatreenew/Widgets/alertBoxes.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
+import 'package:visatreenew/util/appcontants.dart';
+import 'package:visatreenew/util/images.dart';
+import 'package:visatreenew/controller/Shortlistbyusercontroller.dart';
+import 'package:visatreenew/controller/documentcontroller.dart';
+import 'package:visatreenew/controller/homeController.dart';
+import 'package:visatreenew/model/getLevellModel.dart';
+import 'package:visatreenew/model/getProgramCourse.dart';
+import 'package:visatreenew/model/getlevelprogram.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/util/session%20management.dart';
 
 class AdminShortlisted extends StatefulWidget {
   AdminShortlisted({super.key});

@@ -51,6 +51,8 @@ class Student {
   int activeStatus;
   int darkMode;
   dynamic messengerColor;
+  bool documentUploaded;
+
 
   Student({
     required this.id,
@@ -68,6 +70,7 @@ class Student {
     required this.activeStatus,
     required this.darkMode,
     required this.messengerColor,
+    required this.documentUploaded
   });
 
   factory Student.fromJson(Map<String, dynamic> json) => Student(
@@ -86,6 +89,7 @@ class Student {
         activeStatus: json["active_status"],
         darkMode: json["dark_mode"],
         messengerColor: json["messenger_color"],
+        documentUploaded: json['document_uploaded']
       );
 
   Map<String, dynamic> toJson() => {
@@ -104,5 +108,6 @@ class Student {
         "active_status": activeStatus,
         "dark_mode": darkMode,
         "messenger_color": messengerColor,
+        "document_uploaded":documentUploaded
       };
 }

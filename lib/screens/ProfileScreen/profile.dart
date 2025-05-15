@@ -2,17 +2,18 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:visatree/Widgets/LoadingLayout.dart';
-import 'package:visatree/Widgets/snackbar.dart';
-import 'package:visatree/controller/ProfileController.dart';
-import 'package:visatree/screens/ProfileScreen/editprofile.dart';
-import 'package:visatree/screens/ProfileScreen/uploaddocuments.dart';
-import 'package:visatree/screens/authentication/loginscreen.dart';
-import 'package:visatree/util/ApiUrl.dart';
-import 'package:visatree/util/appcontants.dart';
-import 'package:visatree/util/images.dart';
-import 'package:visatree/util/session%20management.dart';
-import 'package:visatree/util/viewImage.dart';
+import 'package:visatreenew/Widgets/LoadingLayout.dart';
+import 'package:visatreenew/Widgets/snackbar.dart';
+import 'package:visatreenew/controller/ProfileController.dart';
+import 'package:visatreenew/multipicelectScreen.dart';
+import 'package:visatreenew/screens/ProfileScreen/editprofile.dart';
+import 'package:visatreenew/screens/ProfileScreen/uploaddocuments.dart';
+import 'package:visatreenew/screens/authentication/loginscreen.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
+import 'package:visatreenew/util/appcontants.dart';
+import 'package:visatreenew/util/images.dart';
+import 'package:visatreenew/util/session%20management.dart';
+import 'package:visatreenew/util/viewImage.dart';
 
 
 
@@ -24,6 +25,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  var profile = Get.put(ProfileController());
   // String studphone="";
   // String studemail="";
   // String studage="";
@@ -38,7 +40,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   // String lastname="";
   @override
   void initState() {
+    profile.getdata();
     super.initState();
+    profile.getdata();
     // setdata();
   }
 
@@ -178,29 +182,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
-                              InkWell(
-                                onTap: () {
-                                  Get.to( UploadDocuments());
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Document Upload",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 15,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 40,
-                                      height: 40,
-                                      child: Image.asset(images.document,
-                                          height: 40, width: 40),
-                                    ),
-                                  ],
-                                ),
-                              )
+
                             ],
                           )
                         ],
@@ -318,8 +300,59 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                       const SizedBox(
-                        height: 15,
+                        height: 50,
                       ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(UploadDocumentScreen(title:profilecontroller.profileData?.student.documentUploaded==true?
+                          "My Documents" :"Upload Documents"));
+                        },
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          curve: Curves.easeInOut,
+                          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [AppColors.primaryColor, AppColors.primaryColor],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.primaryColor.withOpacity(0.3),
+                                blurRadius: 8,
+                                offset: const Offset(0, 4),
+                              )
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                               Text(profilecontroller.profileData?.student.documentUploaded==true?
+                               "My Documents" :"Upload Documents",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              SizedBox(
+                                height: 28,
+                                width: 28,
+                                child: Image.asset(
+                                  images.document,
+                                  fit: BoxFit.contain,
+                                  color: Colors.white, // Tint the image to match button theme
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+
                     ],
                   ),
                 ));

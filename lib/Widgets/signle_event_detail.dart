@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:visatree/util/images.dart';
+import 'package:visatreenew/util/images.dart';
 
 import '../../controller/eventController.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 class SingleEventDetailPage extends StatefulWidget {
   final dynamic data;
@@ -75,8 +75,8 @@ class _SingleEventDetailPageState extends State<SingleEventDetailPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    images.crad,
+                  Image.network(
+                    widget.data.eventImage,
                     height: 100,
                     width: 100,
                   ),

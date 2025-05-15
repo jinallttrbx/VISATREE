@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:visatree/util/appcontants.dart';
-import 'package:visatree/util/images.dart';
+import 'package:visatreenew/util/appcontants.dart';
+import 'package:visatreenew/util/images.dart';
 
 
 

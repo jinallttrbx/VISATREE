@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/LoadingLayout.dart';
+import 'package:visatreenew/Widgets/LoadingLayout.dart';
 
-import 'package:visatree/controller/ProfileController.dart';
-import 'package:visatree/util/ApiUrl.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/controller/ProfileController.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 class Profiledata extends StatefulWidget {
   const Profiledata({super.key});

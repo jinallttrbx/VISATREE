@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:visatree/Widgets/LoadingLayout.dart';
-import 'package:visatree/Widgets/signle_event_detail.dart';
+import 'package:visatreenew/Widgets/LoadingLayout.dart';
+import 'package:visatreenew/Widgets/signle_event_detail.dart';
 
-import 'package:visatree/controller/eventController.dart';
-import 'package:visatree/util/appcontants.dart';
-import 'package:visatree/util/images.dart';
+import 'package:visatreenew/controller/eventController.dart';
+import 'package:visatreenew/util/appcontants.dart';
+import 'package:visatreenew/util/images.dart';
 
 
 
@@ -67,8 +67,8 @@ class _EventListState extends State<EventList> {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(5),
-                          child: Image.asset(
-                            images.crad, height: 100, width: 100,
+                          child: Image.network(
+                            eventcontroller.EventList[index].eventImage, height: 100, width: 100,
                             // height: 150,
                             fit: BoxFit.fill,
                           ),

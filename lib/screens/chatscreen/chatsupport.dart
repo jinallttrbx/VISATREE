@@ -183,9 +183,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
-import 'package:visatree/model/chat_model.dart';
-import 'package:visatree/util/ApiUrl.dart';
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/model/chat_model.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
+import 'package:visatreenew/util/session%20management.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';

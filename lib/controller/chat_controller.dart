@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
-import 'package:visatree/util/ApiUrl.dart';
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
+import 'package:visatreenew/util/session%20management.dart';
 import '../model/chat_model.dart';
 import '../screens/chatscreen/chatscreen.dart';
 import 'package:http/http.dart' as http;
@@ -93,6 +93,6 @@ class ChatController extends GetxController {
   }
 
   Future<void> handleBackgroundMessage(RemoteMessage message) async {
-    Get.to(ChatScreen());
+    Get.to(ChatScreen1());
   }
 }

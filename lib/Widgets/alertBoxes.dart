@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:gradient_progress_indicator/widget/gradient_progress_indicator_widget.dart';
-import 'package:visatree/Widgets/const_text.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
-import 'package:visatree/util/images.dart';
-import 'package:visatree/util/spacer.dart';
+import 'package:visatreenew/util/images.dart';
+import 'package:visatreenew/util/spacer.dart';
 
 
 
@@ -91,7 +91,7 @@ showLoadingDialog() {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(images.logo,height: 50,)
+                  Image.asset(images.appiconload,height: 50,)
                 ],
               ),
             )

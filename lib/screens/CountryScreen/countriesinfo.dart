@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/const_text.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/controller/homeController.dart';
-import 'package:visatree/screens/UniversityScreen/homeUni.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/controller/homeController.dart';
+import 'package:visatreenew/screens/UniversityScreen/Homeuniersityscreen.dart';
+import 'package:visatreenew/screens/UniversityScreen/homeUni.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 
 
@@ -62,7 +63,7 @@ class _CountriesInfoState extends State<CountriesInfo> {
             itemBuilder: (BuildContext context, int index) {
               return InkWell(
                 onTap: () {
-                  Get.to(HomeUniversityList(
+                  Get.to(HomeUniversity(
                     isDashBoard: false,
                     countryId: countrycontroller.CountryList[index].id.toString(),
                   ));

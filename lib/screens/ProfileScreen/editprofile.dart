@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:visatree/Widgets/const_text.dart';
-import 'package:visatree/util/ApiUrl.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
 
 import '/controller/ProfileController.dart';
 import '/model/profilemodel.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 class EditProfile extends StatefulWidget {
   Student? student;

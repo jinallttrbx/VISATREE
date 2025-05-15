@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/const_text.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/controller/forgotpasswordController.dart';
-import 'package:visatree/screens/authentication/changepassword.dart';
+import 'package:visatreenew/controller/forgotpasswordController.dart';
+import 'package:visatreenew/screens/authentication/changepassword.dart';
 
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
   const ForgetPasswordScreen({super.key});

@@ -1,9 +1,10 @@
+
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
-import 'package:visatree/Widgets/const_text.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
 
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 class ExamDetails extends StatefulWidget {
   var overview, result, sample, registration, syllabus, dates, testcenter;

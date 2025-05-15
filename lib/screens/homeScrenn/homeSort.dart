@@ -1,10 +1,10 @@
-import 'package:buttons_tabbar/buttons_tabbar.dart';
-import 'package:flutter/material.dart';
-import 'package:visatree/Widgets/const_text.dart';
-import 'package:visatree/screens/Shortlisted/ShortlistedByUser.dart';
-import 'package:visatree/screens/Shortlisted/adminsortscreen.dart';
 
-import 'package:visatree/util/appcontants.dart';
+import 'package:flutter/material.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
+import 'package:visatreenew/screens/Shortlisted/ShortlistedByUser.dart';
+import 'package:visatreenew/screens/Shortlisted/adminsortscreen.dart';
+
+import 'package:visatreenew/util/appcontants.dart';
 
 class HomeShortListed extends StatefulWidget {
   const HomeShortListed({super.key});
@@ -64,62 +64,62 @@ appBar: AppBar(
                 const SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(163, 213, 208, 208),
-                        borderRadius: BorderRadius.circular(10)),
-                    width: MediaQuery.of(context).size.width,
-                    child: ButtonsTabBar(
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          // gradient: const LinearGradient(colors: [
-                          //   AppColors.primaryColor2,
-                          //   AppColors.primaryColor
-                          // ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                          // color: Color(0xFF439E5B),
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            const BoxShadow(
-                              color: Color(0xFFFFFFFF),
-                              blurRadius: 4,
-                              offset: Offset(0, 4),
-                              spreadRadius: 0,
-                            )
-                          ],
-                        ),
-                        tabs: [
-                          Tab(
-                            child: Container(
-                              alignment: Alignment.center,
-                              width: MediaQuery.of(context).size.width * 0.42,
-                              child: const Text(
-                                "My Shortlist ",
-                                style: TextStyle(color: Colors.black),
-                              ),
-                            ),
-                          ),
-                          Tab(
-                            child: Container(
-                              alignment: Alignment.center,
-                              width: MediaQuery.of(context).size.width * 0.396,
-                              child: const Text(
-                                "VisaTree Suggested ",
-                                style: TextStyle(color: Colors.black),
-                              ),
-                            ),
-                          )
-                        ]),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 20),
+                //   child: Container(
+                //     alignment: Alignment.center,
+                //     decoration: BoxDecoration(
+                //         color: const Color.fromARGB(163, 213, 208, 208),
+                //         borderRadius: BorderRadius.circular(10)),
+                //     width: MediaQuery.of(context).size.width,
+                //     child: ButtonsTabBar(
+                //         decoration: BoxDecoration(
+                //           color: AppColors.primaryColor,
+                //           // gradient: const LinearGradient(colors: [
+                //           //   AppColors.primaryColor2,
+                //           //   AppColors.primaryColor
+                //           // ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                //           // color: Color(0xFF439E5B),
+                //           shape: BoxShape.rectangle,
+                //           borderRadius: BorderRadius.circular(10),
+                //           boxShadow: [
+                //             const BoxShadow(
+                //               color: Color(0xFFFFFFFF),
+                //               blurRadius: 4,
+                //               offset: Offset(0, 4),
+                //               spreadRadius: 0,
+                //             )
+                //           ],
+                //         ),
+                //         tabs: [
+                //           Tab(
+                //             child: Container(
+                //               alignment: Alignment.center,
+                //               width: MediaQuery.of(context).size.width * 0.42,
+                //               child: const Text(
+                //                 "My Shortlist ",
+                //                 style: TextStyle(color: Colors.black),
+                //               ),
+                //             ),
+                //           ),
+                //           Tab(
+                //             child: Container(
+                //               alignment: Alignment.center,
+                //               width: MediaQuery.of(context).size.width * 0.396,
+                //               child: const Text(
+                //                 "VisaTree Suggested ",
+                //                 style: TextStyle(color: Colors.black),
+                //               ),
+                //             ),
+                //           )
+                //         ]),
+                //   ),
+                // ),
                 Flexible(
                   child: TabBarView(
                     physics: AlwaysScrollableScrollPhysics(),
                     children: [
-                      ShortbyUser(),
+                      ShortbyUser(appbar: false),
                       AdminShortlisted(),
                     ],
                   ),

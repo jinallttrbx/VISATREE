@@ -3,15 +3,15 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/alertBoxes.dart';
-import 'package:visatree/Widgets/snackbar.dart';
+import 'package:visatreenew/Widgets/alertBoxes.dart';
+import 'package:visatreenew/Widgets/snackbar.dart';
 
-import 'package:visatree/model/profilemodel.dart';
+import 'package:visatreenew/model/profilemodel.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:visatree/util/ApiUrl.dart';
-import 'package:visatree/util/images.dart';
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
+import 'package:visatreenew/util/images.dart';
+import 'package:visatreenew/util/session%20management.dart';
 
 
 class ProfileController extends GetxController {

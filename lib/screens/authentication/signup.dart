@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/const_text.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/controller/registerController.dart';
-import 'package:visatree/screens/authentication/loginscreen.dart';
-import 'package:visatree/screens/authentication/changepassword.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/controller/registerController.dart';
+import 'package:visatreenew/screens/authentication/loginscreen.dart';
+import 'package:visatreenew/screens/authentication/changepassword.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 
 class SignupScreen extends StatefulWidget {
@@ -21,9 +21,11 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController confirmpassword = TextEditingController();
   TextEditingController fname = TextEditingController();
   TextEditingController lname = TextEditingController();
+  TextEditingController phone=TextEditingController();
   var controller = Get.put(RegisterController());
   bool passwordVisible = false;
   bool confirmpasswordVisible = false;
+  String monumber = "";
 
   // TextEditingController phone = TextEditingController();
   // TextEditingController email = TextEditingController();
@@ -187,6 +189,25 @@ class _SignupScreenState extends State<SignupScreen> {
                       "Your Email",
                     ),
                   ),
+                  defaultText("Mobile Number"),
+                  TextFormField(
+                    keyboardType: TextInputType.number,
+                    controller: phone,
+                    maxLength: 10,
+                    buildCounter: (context, {required currentLength, required isFocused, maxLength}) => null,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your mobile number';
+                      } else if (!RegExp(r'^\d{10}$').hasMatch(value)) {
+                        return 'Mobile number must be exactly 10 digits';
+                      }
+                      return null;
+                    },
+                    decoration: buildInputDecoration("Mobile Number"),
+                  ),
+
+
+
                   defaultText("Password"),
                   TextFormField(
                       obscureText: passwordVisible,
@@ -213,19 +234,19 @@ class _SignupScreenState extends State<SignupScreen> {
                           },
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(5.0),
                           borderSide:
                           const BorderSide(color: Colors.green, width: 1.5),
                         ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(5.0),
                           borderSide: const BorderSide(
                             color: Colors.grey,
                             width: 1.5,
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(5.0),
                           borderSide: const BorderSide(
                             color: Colors.grey,
                             width: 1.5,
@@ -260,19 +281,19 @@ class _SignupScreenState extends State<SignupScreen> {
                           },
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(5.0),
                           borderSide:
                           const BorderSide(color: Colors.green, width: 1.5),
                         ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(5.0),
                           borderSide: const BorderSide(
                             color: Colors.grey,
                             width: 1.5,
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(5.0),
                           borderSide: const BorderSide(
                             color: Colors.grey,
                             width: 1.5,
@@ -311,7 +332,25 @@ class _SignupScreenState extends State<SignupScreen> {
                             content: Text("Please Enter Valid Email "),
                             duration: Duration(seconds: 2),
                           ));
-                        } else if (password.text.isEmpty) {
+                        } else if(phone.text.isEmpty){
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text("Please Enter Mobile Number  "),
+                            duration: Duration(seconds: 2),
+                          ));
+                        }else if(phone.text.length != 10){
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text("Please Enter Valid Mobile Number"),
+                            duration: Duration(seconds: 2),
+                          ));
+                        }else if(phone.text.length < 10){
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text("Please Enter Valid Mobile Number"),
+                            duration: Duration(seconds: 2),
+                          ));
+
+                        }
+                        else if (password.text.isEmpty) {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
                             content: Text("Please Enter Password  "),
@@ -344,6 +383,8 @@ class _SignupScreenState extends State<SignupScreen> {
                               email.text,
                               password.text,
                               confirmpassword.text,
+                              phone.text,
+
                               context);
                         }
                       },
@@ -362,7 +403,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             color: AppColors.primaryColor,
                           ),
                           child: const Text(
-                            "Sing Up",
+                            "Sign Up",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

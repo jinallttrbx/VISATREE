@@ -228,43 +228,43 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:visatree/Widgets/const_text.dart';
 
-import 'package:visatree/controller/ProfileController.dart';
-import 'package:visatree/controller/ScholarshipController.dart';
-import 'package:visatree/controller/Searchuniversity.dart';
-import 'package:visatree/controller/Shortlistbyusercontroller.dart';
-import 'package:visatree/controller/applyUniController.dart';
-import 'package:visatree/controller/changepasswordcontroller.dart';
-import 'package:visatree/controller/chat_controller.dart';
-import 'package:visatree/controller/documentcontroller.dart';
-import 'package:visatree/controller/eventController.dart';
-import 'package:visatree/controller/examController.dart';
-import 'package:visatree/controller/homeController.dart';
-import 'package:visatree/controller/universityController.dart';
-import 'package:visatree/screens/ClickToFind/university_search.dart';
-import 'package:visatree/screens/CountryScreen/countriesinfo.dart';
-import 'package:visatree/screens/EventScreen/events.dart';
-import 'package:visatree/screens/ExamScreen/exams.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/screens/ProfileScreen/aboutus.dart';
-import 'package:visatree/screens/ProfileScreen/profile.dart';
-import 'package:visatree/screens/ScholarshipScreen/scholarshipUni.dart';
-import 'package:visatree/screens/Shortlisted/shortlisted.dart';
-import 'package:visatree/screens/UniversityScreen/Homeuniersityscreen.dart';
-import 'package:visatree/screens/UniversityScreen/apllicationhistory.dart';
-import 'package:visatree/screens/UniversityScreen/homeUni.dart';
+import 'package:visatreenew/controller/ProfileController.dart';
+import 'package:visatreenew/controller/ScholarshipController.dart';
+import 'package:visatreenew/controller/Searchuniversity.dart';
+import 'package:visatreenew/controller/Shortlistbyusercontroller.dart';
+import 'package:visatreenew/controller/applyUniController.dart';
+import 'package:visatreenew/controller/changepasswordcontroller.dart';
+import 'package:visatreenew/controller/chat_controller.dart';
+import 'package:visatreenew/controller/documentcontroller.dart';
+import 'package:visatreenew/controller/eventController.dart';
+import 'package:visatreenew/controller/examController.dart';
+import 'package:visatreenew/controller/homeController.dart';
+import 'package:visatreenew/controller/universityController.dart';
+import 'package:visatreenew/screens/ClickToFind/university_search.dart';
+import 'package:visatreenew/screens/CountryScreen/countriesinfo.dart';
+import 'package:visatreenew/screens/EventScreen/events.dart';
+import 'package:visatreenew/screens/ExamScreen/exams.dart';
 
-import 'package:visatree/screens/authentication/changepassword.dart';
+import 'package:visatreenew/screens/ProfileScreen/aboutus.dart';
+import 'package:visatreenew/screens/ProfileScreen/profile.dart';
+import 'package:visatreenew/screens/ScholarshipScreen/scholarshipUni.dart';
+import 'package:visatreenew/screens/Shortlisted/shortlisted.dart';
+import 'package:visatreenew/screens/UniversityScreen/Homeuniersityscreen.dart';
+import 'package:visatreenew/screens/UniversityScreen/apllicationhistory.dart';
+import 'package:visatreenew/screens/UniversityScreen/homeUni.dart';
 
-import 'package:visatree/screens/chatscreen/chatscreen.dart';
+import 'package:visatreenew/screens/authentication/changepassword.dart';
 
-import 'package:visatree/screens/homeScrenn/HomeScreen.dart';
+import 'package:visatreenew/screens/chatscreen/chatscreen.dart';
 
-import 'package:visatree/util/appcontants.dart';
-import 'package:visatree/util/images.dart';
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/screens/homeScrenn/HomeScreen.dart';
+
+import 'package:visatreenew/util/appcontants.dart';
+import 'package:visatreenew/util/images.dart';
+import 'package:visatreenew/util/session%20management.dart';
 
 import '../authentication/loginscreen.dart';
 
@@ -330,7 +330,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // changepassword.Changepassword("", "", "", context);
     exam.getExam();
     event.getEvent();
-    document.getuploadeddocument();
+   // document.getuploadeddocument();
+    document.getdocument();
     chat.initMessaging();
     shortbuuni.getShortUniversity();
     shortbuuni.getadminShortUniversity();
@@ -431,7 +432,7 @@ class _MyHomePageState extends State<MyHomePage> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) =>  ChatScreen()));
+                MaterialPageRoute(builder: (context) =>  ChatScreen1()));
           },
           backgroundColor: AppColors.primaryColor,
           child: const Icon(Icons.chat),
@@ -445,7 +446,7 @@ class _MyHomePageState extends State<MyHomePage> {
           isDashBoard: true,
         )
             : _currentIndex == 3
-            ? const ApplicationHistory()
+            ?  ApplicationHistory(appbar: true,)
             : const ProfileScreen(),
         bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
@@ -811,7 +812,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             // ),
                             ListTile(
                               onTap: () async {
-                                const url = 'https://play.google.com/store/apps/';
+                                const url = 'https://play.google.com/store/apps/details?id=com.visatree.user';
                                 try {
                                   await Share.share(url);
                                 } catch (e) {
@@ -978,34 +979,34 @@ class _MyHomePageState extends State<MyHomePage> {
         false; //if showDialouge had returned null, then return false
   }
 
-  void openWhatsapp(
-      {required BuildContext context,
-        required String text,
-        required String number}) async {
-    var whatsapp = number; //+92xx enter like this
-    var whatsappURlAndroid =
-        "whatsapp://send?phone=" + whatsapp + "&text=$text";
-    var whatsappURLIos = "https://wa.me/$whatsapp?text=${Uri.tryParse(text)}";
-    if (Platform.isIOS) {
-      // for iOS phone only
-      if (await canLaunchUrl(Uri.parse(whatsappURLIos))) {
-        await launchUrl(Uri.parse(
-          whatsappURLIos,
-        ));
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Whatsapp not installed")));
-      }
-    } else {
-      // android , web
-      if (await canLaunchUrl(Uri.parse(whatsappURlAndroid))) {
-        await launchUrl(Uri.parse(whatsappURlAndroid));
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Whatsapp not installed")));
-      }
-    }
-  }
+  // void openWhatsapp(
+  //     {required BuildContext context,
+  //       required String text,
+  //       required String number}) async {
+  //   var whatsapp = number; //+92xx enter like this
+  //   var whatsappURlAndroid =
+  //       "whatsapp://send?phone=" + whatsapp + "&text=$text";
+  //   var whatsappURLIos = "https://wa.me/$whatsapp?text=${Uri.tryParse(text)}";
+  //   if (Platform.isIOS) {
+  //     // for iOS phone only
+  //     if (await canLaunchUrl(Uri.parse(whatsappURLIos))) {
+  //       await launchUrl(Uri.parse(
+  //         whatsappURLIos,
+  //       ));
+  //     } else {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //           const SnackBar(content: Text("Whatsapp not installed")));
+  //     }
+  //   } else {
+  //     // android , web
+  //     if (await canLaunchUrl(Uri.parse(whatsappURlAndroid))) {
+  //       await launchUrl(Uri.parse(whatsappURlAndroid));
+  //     } else {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //           const SnackBar(content: Text("Whatsapp not installed")));
+  //     }
+  //   }
+  // }
 
   void setdata() async {
     print("Set Data to user ");

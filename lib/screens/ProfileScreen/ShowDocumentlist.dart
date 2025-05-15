@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/const_text.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/controller/documentcontroller.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/controller/documentcontroller.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 class ViewDocument extends StatefulWidget {
   ViewDocument({super.key});
@@ -17,7 +17,7 @@ class _ViewDocumentState extends State<ViewDocument> {
   final double padding=0;
   @override
   void initState() {
-    Get.find<DocumentController>().getuploadeddocument();
+  //  Get.find<DocumentController>().getuploadeddocument();
     super.initState();
   }
 

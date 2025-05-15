@@ -1,12 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:visatree/controller/chat_controller.dart';
-import 'package:visatree/controller/firebase_class.dart';
-import 'package:visatree/util/appcontants.dart';
-import 'package:visatree/screens/authentication/splash.dart';
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/controller/chat_controller.dart';
+import 'package:visatreenew/controller/firebase_class.dart';
+import 'package:visatreenew/util/appcontants.dart';
+import 'package:visatreenew/screens/authentication/splash.dart';
+import 'package:visatreenew/util/session%20management.dart';
 
 
 // import 'controller/firebase_class.dart';`
@@ -15,15 +16,12 @@ final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
- // Permission.notification.request();
-  await Firebase.initializeApp();
-   //await FirebaseApi().initNotification();
-  await Permission.notification.request().then((value) async {
-    print("NOTIFICATION PERMISSION VALUER $value");
-    if (value != PermissionStatus.granted) {
-      await Permission.notification.request();
-    }
-  });
+  await Firebase.initializeApp(
+
+  );
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(const MyApp());
 }
 
@@ -38,7 +36,7 @@ class _MyAppState extends State<MyApp> {
   //final controller = ChatController();
   @override
   void initState() {
-   // setNotInChat();
+    setNotInChat();
    // controller.initMessaging();
     super.initState();
   }

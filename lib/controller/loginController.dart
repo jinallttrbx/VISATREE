@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:visatree/Widgets/alertBoxes.dart';
-import 'package:visatree/screens/homeScrenn/curvedbutton.dart';
-import 'package:visatree/util/ApiUrl.dart';
-import 'package:visatree/util/images.dart';
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/Widgets/alertBoxes.dart';
+import 'package:visatreenew/screens/homeScrenn/curvedbutton.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
+import 'package:visatreenew/util/images.dart';
+import 'package:visatreenew/util/session%20management.dart';
 
 
 

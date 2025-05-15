@@ -117,13 +117,14 @@
 //   }
 // }
 
+
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/const_text.dart';
-import 'package:visatree/screens/Shortlisted/ShortlistedByUser.dart';
-import 'package:visatree/screens/Shortlisted/adminsortscreen.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
+import 'package:visatreenew/screens/Shortlisted/ShortlistedByUser.dart';
+import 'package:visatreenew/screens/Shortlisted/adminsortscreen.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 
 
@@ -224,7 +225,7 @@ class _ShortListedState extends State<ShortListed> {
               child: TabBarView(
                 physics: AlwaysScrollableScrollPhysics(),
                 children: [
-                  ShortbyUser(),
+                  ShortbyUser(appbar: false),
                   AdminShortlisted(),
                 ],
               ),

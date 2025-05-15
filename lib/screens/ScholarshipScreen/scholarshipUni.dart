@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/LoadingLayout.dart';
-import 'package:visatree/Widgets/const_text.dart';
+import 'package:intl/intl.dart';
+import 'package:visatreenew/Widgets/LoadingLayout.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/controller/ScholarshipController.dart';
-import 'package:visatree/controller/universityController.dart';
-import 'package:visatree/screens/UniversityScreen/universityDetails.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/controller/ScholarshipController.dart';
+import 'package:visatreenew/controller/universityController.dart';
+import 'package:visatreenew/screens/UniversityScreen/universityDetails.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 
 class ScholaShipUniversity extends StatefulWidget {
@@ -165,6 +166,7 @@ class _ScholaShipUniversityState extends State<ScholaShipUniversity> {
                     RegExp exp = RegExp(r"<[^>]*>",
                         multiLine: true, caseSensitive: true);
                     String parsedstring1 = html.replaceAll(exp, '');
+                    DateTime deadline=DateTime.parse(scholaShipCOntroller.scholarDataList[index].deadline.toString());
 
                     return Padding(
                       padding: const EdgeInsets.only(
@@ -214,6 +216,30 @@ class _ScholaShipUniversityState extends State<ScholaShipUniversity> {
                                   Row(
                                     children: [
                                       const Text(
+                                        "ScolarShip Type : ",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "${scholaShipCOntroller.scholarDataList[index].type}",
+                                          style: const TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Divider(
+                                    color: Colors.grey,
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Text(
                                         "University : ",
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -247,6 +273,104 @@ class _ScholaShipUniversityState extends State<ScholaShipUniversity> {
                                       Expanded(
                                         child: Text(
                                           "${scholaShipCOntroller.scholarDataList[index].courseName}",
+                                          style: const TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Divider(
+                                    color: Colors.grey,
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        "Country : ",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "${scholaShipCOntroller.scholarDataList[index].countryName}",
+                                          style: const TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Divider(
+                                    color: Colors.grey,
+                                  ),
+
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        "Number Of Awards : ",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "${scholaShipCOntroller.scholarDataList[index].awards}",
+                                          style: const TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Divider(
+                                    color: Colors.grey,
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        "Final Deadline : ",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "${DateFormat("dd-MM-yyyy").format(deadline)}",
+                                          style: const TextStyle(
+                                            fontWeight:
+                                            FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Divider(
+                                    color: Colors.grey,
+                                  ),
+
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        "Max Scholarship Per Student : ",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "${scholaShipCOntroller.scholarDataList[index].max}",
                                           style: const TextStyle(
                                             fontWeight:
                                             FontWeight.bold,

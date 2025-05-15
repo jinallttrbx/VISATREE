@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/ExamdetailsScreen.dart';
-import 'package:visatree/Widgets/const_text.dart';
-
-import 'package:visatree/controller/examController.dart';
-import 'package:visatree/model/exammodel.dart';
-import 'package:visatree/screens/ExamScreen/examdetails.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/ExamdetailsScreen.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
+import 'package:html/parser.dart' as html_parser;
+import 'package:visatreenew/controller/examController.dart';
+import 'package:visatreenew/model/exammodel.dart';
+import 'package:visatreenew/screens/ExamScreen/examdetails.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 
 class ExamScreen extends StatefulWidget{
@@ -60,41 +60,65 @@ class _ExamScreenState extends State<ExamScreen> {
                   padding: EdgeInsets.all(25),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 20,childAspectRatio: 2.8,mainAxisSpacing: 20,),
                   itemBuilder: ( context, index) {
-                    String html =controller.ExamList[index].overview;
-                    RegExp exp = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
-                    String parsedstring1 = html.replaceAll(exp, '');
-                    print(parsedstring1);
-                    String html1 =controller.ExamList[index].practicePaper;
-                    RegExp exp1 = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
-                    String parsedstring2 = html1.replaceAll(exp1, '');
-                    print(parsedstring2);
-                    String html2 =controller.ExamList[index].registration;
-                    RegExp exp2 = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
-                    String parsedstring3 = html2.replaceAll(exp2, '');
-                    print(parsedstring3);
-                    String html3 =controller.ExamList[index].dates;
-                    RegExp exp3 = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
-                    String parsedstring4 = html3.replaceAll(exp3, '');
-                    print(parsedstring4);
-                    String html4 =controller.ExamList[index].testCenter;
-                    RegExp exp4 = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
-                    String parsedstring5 = html4.replaceAll(exp4, '');
-                    print(parsedstring5);
-                    String html5 =controller.ExamList[index].syllabus;
-                    RegExp exp5 = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
-                    String parsedstring6 = html5.replaceAll(exp5, '');
-                    print(parsedstring6);
-
+                    // String overview =controller.ExamList[index].overview;
+                    // RegExp overviewtext = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
+                    // String showoverview = overview.replaceAll(overviewtext, '');
+                    // print(showoverview);
+                    // String practicePaper =controller.ExamList[index].practicePaper;
+                    // RegExp practicePapertext = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
+                    // String showpracticePaper = practicePaper.replaceAll(practicePapertext, '');
+                    // print(showpracticePaper);
+                    // String registration =controller.ExamList[index].registration;
+                    // RegExp registrationtext = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
+                    // String showregistration = registration.replaceAll(registrationtext, '');
+                    // print(showregistration);
+                    // String examdates =controller.ExamList[index].dates;
+                    // RegExp examdatestext = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
+                    // String showexamdates = examdates.replaceAll(examdatestext, '');
+                    // print(showexamdates);
+                    // String testcenter =controller.ExamList[index].testCenter;
+                    // RegExp testcentertext = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
+                    // String showtestcenter = testcenter.replaceAll(testcentertext, '');
+                    // print(showtestcenter);
+                    // String syllabus =controller.ExamList[index].syllabus;
+                    // RegExp syllabustext = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
+                    // String showsyllabus = syllabus.replaceAll(syllabustext, '');
+                    // print(showsyllabus);
+                    // String score =controller.ExamList[index].syllabus;
+                    // RegExp scoretext = RegExp(r"<[^>]*>",multiLine: true,caseSensitive: true);
+                    // String showscore = score.replaceAll(scoretext, '');
+                    // print(showscore);
+                    final overview = html_parser.parse(controller.ExamList[index].overview);
+                    String parsedText = overview.body?.text ?? '';
+                    String OVERVIEW = parsedText.replaceAll('\u00A0', '');
+                    final practicepaper = html_parser.parse(controller.ExamList[index].practicePaper);
+                    String parsedText1 = practicepaper.body?.text ?? '';
+                    String PRACTICEPAPER = parsedText1.replaceAll('\u00A0', '');
+                    final registration = html_parser.parse(controller.ExamList[index].registration);
+                    String parsedText2 = registration.body?.text ?? '';
+                    String REGISTRATION = parsedText2.replaceAll('\u00A0', '');
+                    final dates = html_parser.parse(controller.ExamList[index].dates);
+                    String parsedText3 = dates.body?.text ?? '';
+                    String DATES = parsedText3.replaceAll('\u00A0', '');
+                    final testcenter = html_parser.parse(controller.ExamList[index].testCenter);
+                    String parsedText4 = testcenter.body?.text ?? '';
+                    String TESTCENTER = parsedText4.replaceAll('\u00A0', '');
+                    final syllabus = html_parser.parse(controller.ExamList[index].syllabus);
+                    String parsedText5 = syllabus.body?.text ?? '';
+                    String SYLLABUS = parsedText5.replaceAll('\u00A0', '');
+                    // final overview = html_parser.parse(controller.ExamList[index].overview);
+                    // String parsedText = overview.body?.text ?? '';
+                    // String OVERVIEW = parsedText.replaceAll('\u00A0', '');
                     return  InkWell(
                         onTap: () {
                           Get.to(ExamDetails(
-                            result:  controller.ExamList[index].exam,
-                            overview: parsedstring1,
-                            sample: parsedstring2,
-                            registration: parsedstring3,
-                            dates: parsedstring4,
-                            testcenter: parsedstring5,
-                            syllabus: parsedstring6,
+                            result:  SYLLABUS,
+                            overview: OVERVIEW,
+                            sample: PRACTICEPAPER,
+                            registration: REGISTRATION,
+                            dates: DATES,
+                            testcenter: TESTCENTER,
+                            syllabus: SYLLABUS,
                           ));
                         },
                         child: examContainer(

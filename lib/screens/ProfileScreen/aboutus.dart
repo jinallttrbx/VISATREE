@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:visatree/Widgets/const_text.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});

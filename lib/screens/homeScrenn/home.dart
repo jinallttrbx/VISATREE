@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/const_text.dart';
-import 'package:visatree/controller/eventController.dart';
-import 'package:visatree/screens/ClickToFind/university_search.dart';
-import 'package:visatree/screens/CountryScreen/countriesinfo.dart';
-import 'package:visatree/screens/EventScreen/Eventlistshow.dart';
-import 'package:visatree/screens/EventScreen/events.dart';
-import 'package:visatree/screens/ProfileScreen/profileshow.dart';
-import 'package:visatree/screens/ScholarshipScreen/scholarshipUni.dart';
-import 'package:visatree/screens/Shortlisted/shortlisted.dart';
-import 'package:visatree/screens/UniversityScreen/homeUni.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
+import 'package:visatreenew/controller/eventController.dart';
+import 'package:visatreenew/screens/ClickToFind/university_search.dart';
+import 'package:visatreenew/screens/CountryScreen/countriesinfo.dart';
+import 'package:visatreenew/screens/EventScreen/Eventlistshow.dart';
+import 'package:visatreenew/screens/EventScreen/events.dart';
+import 'package:visatreenew/screens/ProfileScreen/profileshow.dart';
+import 'package:visatreenew/screens/ScholarshipScreen/scholarshipUni.dart';
+import 'package:visatreenew/screens/Shortlisted/shortlisted.dart';
+import 'package:visatreenew/screens/UniversityScreen/Homeuniersityscreen.dart';
+import 'package:visatreenew/screens/UniversityScreen/homeUni.dart';
 
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
-import 'package:visatree/screens/homeScrenn/homeSort.dart';
+import 'package:visatreenew/screens/homeScrenn/homeSort.dart';
 
-import 'package:visatree/util/images.dart';
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/util/images.dart';
+import 'package:visatreenew/util/session%20management.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) =>  HomeUniversityList(isDashBoard: false)),
+                            MaterialPageRoute(builder: (context) =>  HomeUniversity(isDashBoard: false)),
                           );
                           //Get.to(const HomeUniversityList(isDashBoard: false));
                         },

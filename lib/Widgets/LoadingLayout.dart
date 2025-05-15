@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gradient_progress_indicator/widget/gradient_progress_indicator_widget.dart';
 
 
-import 'package:visatree/util/appcontants.dart';
-import 'package:visatree/util/images.dart';
+import 'package:visatreenew/util/appcontants.dart';
+import 'package:visatreenew/util/images.dart';
 
 
 
@@ -30,7 +30,7 @@ class LoadingLayout extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(images.logo,height: 50,)
+          Image.asset(images.logologin,height: 50,)
         ],
       ),
     );

@@ -4,24 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:get/get.dart';
 
-import 'package:visatree/Widgets/alertBoxes.dart';
+import 'package:visatreenew/Widgets/alertBoxes.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/util/ApiUrl.dart';
-import 'package:visatree/util/appcontants.dart';
-import 'package:visatree/util/images.dart';
-import 'package:visatree/controller/Shortlistbyusercontroller.dart';
-import 'package:visatree/controller/documentcontroller.dart';
-import 'package:visatree/controller/homeController.dart';
-import 'package:visatree/model/getLevellModel.dart';
-import 'package:visatree/model/getProgramCourse.dart';
-import 'package:visatree/model/getlevelprogram.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
+import 'package:visatreenew/util/appcontants.dart';
+import 'package:visatreenew/util/images.dart';
+import 'package:visatreenew/controller/Shortlistbyusercontroller.dart';
+import 'package:visatreenew/controller/documentcontroller.dart';
+import 'package:visatreenew/controller/homeController.dart';
+import 'package:visatreenew/model/getLevellModel.dart';
+import 'package:visatreenew/model/getProgramCourse.dart';
+import 'package:visatreenew/model/getlevelprogram.dart';
 
 import 'package:http/http.dart' as http;
 
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/util/session%20management.dart';
 
 class ShortbyUser extends StatefulWidget {
-  ShortbyUser({super.key});
+  bool appbar;
+  ShortbyUser({super.key,required this.appbar});
 
   @override
   State<ShortbyUser> createState() => _ShortbyUserState();
@@ -38,7 +40,24 @@ class _ShortbyUserState extends State<ShortbyUser> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body:
+    return Scaffold(
+      appBar: widget.appbar==true?AppBar(
+        titleSpacing: 20,
+        title: Row(
+          children: [
+            boldtext(Colors.white, 18, "University Shortlisted"),
+          ],
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: AppColors.primaryColor,
+      ):null,
+        body:
     universityController.shortbyuser.isEmpty?
     Container(
         height: MediaQuery.of(context).size.height/2,

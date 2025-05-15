@@ -3,18 +3,18 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:visatree/Widgets/const_text.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/model/GetLevel.dart';
-import 'package:visatree/model/countrymodel.dart';
-import 'package:visatree/model/getProgramCourse.dart';
-import 'package:visatree/model/getcourseunoversity.dart';
-import 'package:visatree/model/getlevelprogram.dart';
-import 'package:visatree/screens/ClickToFind/SearchUniversitylist.dart';
-import 'package:visatree/util/ApiUrl.dart';
+import 'package:visatreenew/model/GetLevel.dart';
+import 'package:visatreenew/model/countrymodel.dart';
+import 'package:visatreenew/model/getProgramCourse.dart';
+import 'package:visatreenew/model/getcourseunoversity.dart';
+import 'package:visatreenew/model/getlevelprogram.dart';
+import 'package:visatreenew/screens/ClickToFind/SearchUniversitylist.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
 
-import 'package:visatree/util/appcontants.dart';
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/util/appcontants.dart';
+import 'package:visatreenew/util/session%20management.dart';
 
 
 class UniversitySearch extends StatefulWidget {

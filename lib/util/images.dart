@@ -1,7 +1,9 @@
 class images {
 
   static const String logo = 'assets/images/logo.png';
- static const String logomain = 'assets/images/logo_main.png';
+  static const String logologin = 'assets/images/app_icon.png';
+ static const String logomain = 'assets/images/app_icon.png';
+  static const String logomain1 = 'assets/images/loginlogo.png';
  static const String backgroundsplash='assets/images/background.png';
   static const String logow = 'assets/images/logo-white.png';
   static const String logowhite = 'assets/images/visalogo.png';
@@ -40,6 +42,7 @@ class images {
   static const String logout="assets/images/logout.svg";
   static const String download="assets/images/downlod.svg";
   static const String girlback="assets/images/girlback.png";
+  static const String appiconload="assets/images/app_icon.png";
 
 
 }

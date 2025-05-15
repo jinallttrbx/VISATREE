@@ -1,7 +1,9 @@
 class ApiUrl {
-  static var BASEURL="https://visatree.lttrbx.in/";
+ // static var BASEURL="https://visatree.lttrbx.in/";
+  static var BASEURL ="https://app.visatree.in/";
   //static var baseurl = "https://newvisatree.lttrbxtech.com/api/"; https://visatree.lttrbx.in
-  static var baseurl="https://visatree.lttrbx.in/api/";
+ // static var baseurl="https://visatree.lttrbx.in/api/";
+  static var baseurl="https://app.visatree.in/api/";
   static var login = "${baseurl}login";
   static var register = "${baseurl}register";
   static var getexam = "${baseurl}getexam";
@@ -34,6 +36,6 @@ class ApiUrl {
   static var storeuniversiti="${baseurl}universitystore";
   static var shortlistuniversity="${baseurl}shortliststore";
   static var uploadpdf="${baseurl}upload/pdfs";
+  static var updatedocument ="${baseurl}document/update";
   static var shorlistbyuser="${baseurl}getuniversity_by_shortlist";
-
 }

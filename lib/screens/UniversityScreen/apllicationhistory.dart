@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visatree/Widgets/const_text.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
 
-import 'package:visatree/controller/applyUniController.dart';
-import 'package:visatree/util/ApiUrl.dart';
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/controller/applyUniController.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 class ApplicationHistory extends StatefulWidget {
-  const ApplicationHistory({super.key});
+ final bool appbar;
+   ApplicationHistory({super.key,required this.appbar});
 
   @override
   State<ApplicationHistory> createState() => _ApplicationHistoryState();
@@ -23,24 +24,24 @@ class _ApplicationHistoryState extends State<ApplicationHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   titleSpacing: 0,
-      //   title: Row(
-      //     children: [
-      //      boldtext(
-      //           Colors.white, 18, "Application History")
-      //
-      //     ],
-      //   ),
-      //   shape:  RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.only(
-      //       bottomLeft: Radius.circular(10),
-      //       bottomRight: Radius.circular(10),
-      //     ),
-      //   ),
-      //   elevation: 0,
-      //   backgroundColor: AppColors.primaryColor,
-      // ),
+      appBar: widget.appbar!=true?AppBar(
+        titleSpacing: 0,
+        title: Row(
+          children: [
+            boldtext(
+                Colors.white, 18, "Application History")
+
+          ],
+        ),
+        shape:  RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: AppColors.primaryColor,
+      ):null,
       body: GetX<ApplyUniController>(
         builder: (controller) => controller.isLoading.isTrue
             ? const Center(

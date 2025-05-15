@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:url_launcher/url_launcher.dart';
-import 'package:visatree/screens/authentication/loginscreen.dart';
-import 'package:visatree/util/ApiUrl.dart';
+
+import 'package:visatreenew/screens/authentication/loginscreen.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
 
 class ForgotPasswordController extends GetxController {
   var isLoading = false.obs;
@@ -49,11 +49,11 @@ class ForgotPasswordController extends GetxController {
     }
   }
 
-  _launchURL() async {
-    final Uri url = Uri.parse(
-        '${ApiUrl.BASEURL}reset-password/975954bfe0f3b8ddf0a53a37d74741dd8df7b9d4676f664c3432dabf4f4033ae?email=mehul.lttrbx%40gmail.com');
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
-    }
-  }
+  // _launchURL() async {
+  //   final Uri url = Uri.parse(
+  //       '${ApiUrl.BASEURL}reset-password/975954bfe0f3b8ddf0a53a37d74741dd8df7b9d4676f664c3432dabf4f4033ae?email=mehul.lttrbx%40gmail.com');
+  //   if (!await launchUrl(url)) {
+  //     throw Exception('Could not launch $url');
+  //   }
+  // }
 }

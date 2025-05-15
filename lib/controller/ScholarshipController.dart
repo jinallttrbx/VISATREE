@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:visatree/Widgets/snackbar.dart';
-import 'package:visatree/model/GetScholarshioModel.dart';
-import 'package:visatree/model/getScholarShipModel.dart';
-import 'package:visatree/util/ApiUrl.dart';
-import 'package:visatree/util/images.dart';
-import 'package:visatree/util/session%20management.dart';
+import 'package:visatreenew/Widgets/snackbar.dart';
+import 'package:visatreenew/model/GetScholarshioModel.dart';
+import 'package:visatreenew/model/getScholarShipModel.dart';
+import 'package:visatreenew/util/ApiUrl.dart';
+import 'package:visatreenew/util/images.dart';
+import 'package:visatreenew/util/session%20management.dart';
 
 class ScholarshipController extends GetxController {
   var isLoading = false.obs;

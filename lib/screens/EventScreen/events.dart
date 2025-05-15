@@ -2,15 +2,15 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:visatree/Widgets/LoadingLayout.dart';
-import 'package:visatree/Widgets/const_text.dart';
-import 'package:visatree/Widgets/signle_event_detail.dart';
+import 'package:visatreenew/Widgets/LoadingLayout.dart';
+import 'package:visatreenew/Widgets/const_text.dart';
+import 'package:visatreenew/Widgets/signle_event_detail.dart';
 
-import 'package:visatree/controller/eventController.dart';
+import 'package:visatreenew/controller/eventController.dart';
 
-import 'package:visatree/util/images.dart';
+import 'package:visatreenew/util/images.dart';
 
-import 'package:visatree/util/appcontants.dart';
+import 'package:visatreenew/util/appcontants.dart';
 
 class EventScreen extends StatefulWidget {
   const EventScreen({super.key});
@@ -128,8 +128,8 @@ class _EventScreenState extends State<EventScreen> {
                                                 ClipRRect(
                                                   borderRadius:
                                                   BorderRadius.circular(5),
-                                                  child: Image.asset(
-                                                    images.crad,
+                                                  child: Image.network(
+                                                    eventcontroller.EventList[index].eventImage,
                                                     width: 130,
                                                     fit: BoxFit.cover,
                                                   ),
